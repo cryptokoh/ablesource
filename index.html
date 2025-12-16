@@ -322,16 +322,90 @@
                 padding: 2rem 0;
             }
 
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header p {
+                font-size: 0.95rem;
+            }
+
+            .logo img {
+                height: 36px;
+            }
+
             main {
                 padding: 2rem 0;
+            }
+
+            .section-title {
+                font-size: 0.7rem;
+            }
+
+            .style-preview {
+                aspect-ratio: 4/3;
             }
 
             .style-info {
                 padding: 1rem;
             }
 
+            .style-name {
+                font-size: 1.1rem;
+            }
+
+            .style-description {
+                font-size: 0.85rem;
+            }
+
+            .style-tags {
+                gap: 0.4rem;
+            }
+
+            .style-tag {
+                font-size: 0.65rem;
+                padding: 0.3rem 0.6rem;
+            }
+
             .style-actions {
                 flex-direction: column;
+            }
+
+            .btn {
+                min-height: 48px;
+                font-size: 0.9rem;
+            }
+
+            .color-palette {
+                gap: 6px;
+            }
+
+            .color-swatch {
+                width: 28px;
+                height: 28px;
+            }
+
+            footer p {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+
+            header h1 {
+                font-size: 1.3rem;
+            }
+
+            .style-card {
+                border-radius: 12px;
+            }
+
+            .style-header {
+                flex-direction: column;
+                gap: 0.5rem;
             }
         }
     </style>

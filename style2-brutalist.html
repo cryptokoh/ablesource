@@ -654,6 +654,73 @@
             color: var(--gray);
         }
 
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--electric);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--black);
+            z-index: 999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--electric);
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--electric);
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .problem,
@@ -680,7 +747,38 @@
                 display: none;
             }
 
-            .hero,
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.5rem, 12vw, 4rem);
+            }
+
+            .hero-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-stat .number {
+                font-size: 2rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                min-height: 48px;
+            }
+
             .problem,
             .services,
             .why,
@@ -689,7 +787,10 @@
                 padding: 4rem 1.5rem;
             }
 
-            .hero-grid,
+            .problem-text h2 {
+                font-size: 2.5rem;
+            }
+
             .services-grid,
             .why-grid,
             .testimonial-benefits {
@@ -702,14 +803,55 @@
                 gap: 1rem;
             }
 
+            .services-header h2 {
+                font-size: 3rem;
+            }
+
             .services-header p {
                 text-align: left;
+            }
+
+            .why-left h2 {
+                font-size: 3rem;
+            }
+
+            .testimonial-quote {
+                font-size: 1.5rem;
+            }
+
+            .cta h2 {
+                font-size: clamp(2rem, 8vw, 4rem);
             }
 
             footer {
                 flex-direction: column;
                 gap: 1.5rem;
                 text-align: center;
+                padding: 2rem 1.5rem;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .services-header h2,
+            .why-left h2 {
+                font-size: 2.5rem;
+            }
+
+            .problem-text h2 {
+                font-size: 2rem;
             }
         }
 
@@ -737,7 +879,20 @@
             <li><a href="#why">Why Us</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
+
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+        <a href="#home" class="mobile-nav-link">HOME</a>
+        <a href="#services" class="mobile-nav-link">SERVICES</a>
+        <a href="#why" class="mobile-nav-link">WHY US</a>
+        <a href="#contact" class="mobile-nav-link">CONTACT</a>
+    </div>
 
     <section class="hero" id="home">
         <div class="hero-badge">Trusted Since 1999</div>
@@ -957,6 +1112,29 @@
 
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileNavClose.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
     </script>
 </body>
 </html>
