@@ -139,35 +139,6 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--accent);
         }
 
-        .style-preview {
-            aspect-ratio: 16/10;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .style-preview iframe {
-            width: 200%;
-            height: 200%;
-            transform: scale(0.5);
-            transform-origin: top left;
-            border: none;
-            pointer-events: none;
-        }
-
-        .style-preview-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, transparent 60%, var(--surface) 100%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .style-card:hover .style-preview-overlay {
-            opacity: 1;
-        }
 
         .style-info {
             padding: 1.5rem;
@@ -342,10 +313,6 @@
                 font-size: 0.7rem;
             }
 
-            .style-preview {
-                aspect-ratio: 4/3;
-            }
-
             .style-info {
                 padding: 1rem;
             }
@@ -426,10 +393,6 @@
             <div class="styles-grid">
                 <!-- Style 1: Editorial Luxury -->
                 <article class="style-card">
-                    <div class="style-preview">
-                        <iframe src="style1-editorial-luxury.html" loading="lazy" title="Editorial Luxury Preview"></iframe>
-                        <div class="style-preview-overlay"></div>
-                    </div>
                     <div class="style-info">
                         <div class="style-header">
                             <span class="style-number">Style 01</span>
@@ -464,10 +427,6 @@
 
                 <!-- Style 2: Art Deco -->
                 <article class="style-card">
-                    <div class="style-preview">
-                        <iframe src="style2-brutalist.html" loading="lazy" title="Art Deco Preview"></iframe>
-                        <div class="style-preview-overlay"></div>
-                    </div>
                     <div class="style-info">
                         <div class="style-header">
                             <span class="style-number">Style 02</span>
@@ -502,10 +461,6 @@
 
                 <!-- Style 3: Warm Organic -->
                 <article class="style-card">
-                    <div class="style-preview">
-                        <iframe src="style3-warm-organic.html" loading="lazy" title="Warm Organic Preview"></iframe>
-                        <div class="style-preview-overlay"></div>
-                    </div>
                     <div class="style-info">
                         <div class="style-header">
                             <span class="style-number">Style 03</span>
@@ -540,10 +495,6 @@
 
                 <!-- Style 4: Brutalist -->
                 <article class="style-card">
-                    <div class="style-preview">
-                        <iframe src="style4-art-deco.html" loading="lazy" title="Brutalist Preview"></iframe>
-                        <div class="style-preview-overlay"></div>
-                    </div>
                     <div class="style-info">
                         <div class="style-header">
                             <span class="style-number">Style 04</span>
