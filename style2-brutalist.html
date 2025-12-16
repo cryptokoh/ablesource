@@ -722,6 +722,131 @@
             margin: 0 auto 3rem;
         }
 
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .contact-info .section-title {
+            text-align: left;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-tagline {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .contact-details p {
+            margin-bottom: 0.5rem;
+            color: var(--cream);
+        }
+
+        .contact-details a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-details a:hover {
+            color: var(--gold-light);
+        }
+
+        .contact-form-wrapper h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .form-group .required {
+            color: var(--gold);
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.875rem 1rem;
+            background: var(--navy-light);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--cream);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: var(--navy);
+            color: var(--cream);
+        }
+
+        .contact-form .btn {
+            align-self: flex-start;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .contact-info .section-title {
+                text-align: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form .btn {
+                align-self: stretch;
+                width: 100%;
+            }
+        }
+
         /* Footer */
         footer {
             padding: 3rem 5%;
@@ -1232,16 +1357,50 @@
     </section>
 
     <section class="section cta" id="contact">
-        <div class="section-header reveal">
-            <p class="section-eyebrow">Your Future Awaits</p>
-            <h2>Isn't It Time <span class="gold">You</span><br>Became an Ablesource Client?</h2>
-            <p>Join the distinguished business owners who have made the decision to save money and reduce risk.</p>
-            <a href="mailto:contact@ablesource.com" class="btn btn-primary">
-                Begin Your Partnership
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
+        <div class="contact-container reveal">
+            <div class="contact-info">
+                <p class="section-eyebrow">Let's Connect</p>
+                <h2 class="section-title">Let's Start a <span class="gold">Conversation</span> Today!</h2>
+                <p class="contact-tagline">Let's Save You Time & Money Immediately!</p>
+                <div class="contact-details">
+                    <p><strong>Round Rock, Texas</strong></p>
+                    <p><a href="tel:+16028854488">+1 602 885 4488</a></p>
+                </div>
+            </div>
+            <div class="contact-form-wrapper">
+                <h3>Send us a message</h3>
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="issue">What is Your Most Pressing Issue? <span class="required">*</span></label>
+                        <select id="issue" name="issue" required>
+                            <option value="">Please select one...</option>
+                            <option value="workers-comp">Workers Compensation</option>
+                            <option value="handbook">Employee Handbook</option>
+                            <option value="payroll">Payroll Taxes</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Send Message
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
         </div>
     </section>
 

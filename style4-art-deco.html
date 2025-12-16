@@ -613,6 +613,132 @@
             margin: 0 auto 3rem;
         }
 
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .contact-info h2 {
+            text-align: left;
+            font-size: clamp(2rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        .contact-tagline {
+            font-size: 1.2rem;
+            color: var(--electric);
+            margin-bottom: 2rem;
+        }
+
+        .contact-details p {
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .contact-details a {
+            color: var(--electric);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-details a:hover {
+            color: var(--white);
+        }
+
+        .contact-form-wrapper h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .form-group .required {
+            color: var(--electric);
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.875rem 1rem;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--white);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--electric);
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select option {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .contact-form .btn {
+            align-self: flex-start;
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .contact-info h2 {
+                text-align: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form .btn {
+                align-self: stretch;
+                width: 100%;
+            }
+        }
+
         /* Footer */
         footer {
             padding: 2rem 3rem;
@@ -1078,9 +1204,45 @@
     </section>
 
     <section class="cta" id="contact">
-        <h2>ISN'T IT TIME<br><span class="highlight">YOU</span> JOINED?</h2>
-        <p>Business owners who've made the decision to save money and reduce risk trust Ablesource. Your turn.</p>
-        <a href="mailto:contact@ablesource.com" class="btn btn-primary">Start Now ></a>
+        <div class="contact-container reveal">
+            <div class="contact-info">
+                <h2>LET'S START A<br><span class="highlight">CONVERSATION</span> TODAY</h2>
+                <p class="contact-tagline">Let's Save You Time & Money Immediately!</p>
+                <div class="contact-details">
+                    <p><strong>Round Rock, Texas</strong></p>
+                    <p><a href="tel:+16028854488">+1 602 885 4488</a></p>
+                </div>
+            </div>
+            <div class="contact-form-wrapper">
+                <h3>SEND US A MESSAGE</h3>
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="issue">What is Your Most Pressing Issue? <span class="required">*</span></label>
+                        <select id="issue" name="issue" required>
+                            <option value="">Please select one...</option>
+                            <option value="workers-comp">Workers Compensation</option>
+                            <option value="handbook">Employee Handbook</option>
+                            <option value="payroll">Payroll Taxes</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message ></button>
+                </form>
+            </div>
+        </div>
     </section>
 
     <footer>
