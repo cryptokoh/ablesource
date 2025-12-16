@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABLESOURCE | Excellence in HR & Compliance</title>
+    <title>ABLESOURCE | HR & COMPLIANCE</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy: #0D1B2A;
-            --navy-light: #1B263B;
-            --gold: #D4AF37;
-            --gold-light: #E5C158;
-            --gold-pale: #F5E6C8;
-            --cream: #FAF8F5;
+            --black: #0A0A0A;
             --white: #FFFFFF;
-            --gray: #9CA3AF;
+            --off-white: #F5F5F5;
+            --gray: #888888;
+            --electric: #CCFF00;
+            --red: #FF3333;
         }
 
         * {
@@ -30,24 +28,32 @@
         }
 
         body {
-            font-family: 'Raleway', sans-serif;
-            background: var(--navy);
-            color: var(--cream);
-            line-height: 1.7;
-            font-weight: 400;
+            font-family: 'Space Mono', monospace;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.5;
+            cursor: crosshair;
         }
 
-        /* Geometric patterns */
-        .geo-pattern {
-            position: absolute;
+        ::selection {
+            background: var(--electric);
+            color: var(--black);
+        }
+
+        /* Grid overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
             pointer-events: none;
-        }
-
-        .geo-lines {
-            stroke: var(--gold);
-            stroke-width: 1;
-            fill: none;
-            opacity: 0.3;
+            z-index: 1;
         }
 
         /* Navigation */
@@ -56,18 +62,14 @@
             top: 0;
             left: 0;
             right: 0;
-            padding: 1.5rem 5%;
+            padding: 1.5rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: linear-gradient(to bottom, var(--navy) 60%, transparent);
-        }
-
-        nav.scrolled {
-            background: rgba(13, 27, 42, 0.95);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(10,10,10,0.9);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .logo {
@@ -76,7 +78,7 @@
         }
 
         .logo img {
-            height: 40px;
+            height: 36px;
             width: auto;
         }
 
@@ -88,135 +90,54 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--cream);
+            color: var(--gray);
             font-size: 0.75rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            position: relative;
-            padding-bottom: 0.5rem;
+            transition: color 0.2s;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 1px;
-            background: var(--gold);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            padding: 0.75rem 1.5rem;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gold);
-            transition: left 0.3s;
-            z-index: -1;
-        }
-
-        .nav-cta:hover {
-            color: var(--navy);
-        }
-
-        .nav-cta:hover::before {
-            left: 0;
+        .nav-links a:hover {
+            color: var(--electric);
         }
 
         /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            text-align: center;
-            padding: 8rem 5%;
+            padding: 8rem 3rem 4rem;
             position: relative;
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                linear-gradient(135deg, transparent 24%, rgba(212, 175, 55, 0.03) 25%, rgba(212, 175, 55, 0.03) 26%, transparent 27%),
-                linear-gradient(225deg, transparent 24%, rgba(212, 175, 55, 0.03) 25%, rgba(212, 175, 55, 0.03) 26%, transparent 27%);
-            background-size: 60px 60px;
-        }
-
-        .hero-decoration {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            pointer-events: none;
-        }
-
-        .hero-decoration svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-        }
-
-        .hero-eyebrow {
+        .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 1rem;
-            font-size: 0.7rem;
-            letter-spacing: 0.4em;
+            gap: 0.75rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
-            color: var(--gold);
             margin-bottom: 2rem;
+            width: fit-content;
         }
 
-        .hero-eyebrow::before,
-        .hero-eyebrow::after {
+        .hero-badge::before {
             content: '';
-            width: 40px;
-            height: 1px;
-            background: var(--gold);
+            width: 6px;
+            height: 6px;
+            background: var(--electric);
         }
 
         .hero h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            font-weight: 400;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.05em;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 15vw, 12rem);
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
         }
 
         .hero h1 .line {
@@ -226,497 +147,467 @@
 
         .hero h1 .line span {
             display: block;
-            opacity: 0;
             transform: translateY(100%);
-            animation: slideUp 1s ease forwards;
+            animation: slideUp 0.8s ease forwards;
         }
 
-        .hero h1 .line:nth-child(2) span { animation-delay: 0.15s; }
-        .hero h1 .line:nth-child(3) span { animation-delay: 0.3s; }
+        .hero h1 .line:nth-child(2) span { animation-delay: 0.1s; }
+        .hero h1 .line:nth-child(3) span { animation-delay: 0.2s; }
+        .hero h1 .line:nth-child(4) span { animation-delay: 0.3s; }
 
         @keyframes slideUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { transform: translateY(0); }
         }
 
-        .hero h1 .gold {
-            color: var(--gold);
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            font-weight: 300;
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            opacity: 0;
-            animation: fadeIn 1s ease 0.5s forwards;
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        .hero-cta {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            opacity: 0;
-            animation: fadeIn 1s ease 0.7s forwards;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 2.5rem;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.3s;
+        .hero h1 .highlight {
+            color: var(--electric);
             position: relative;
         }
 
-        .btn-primary {
-            background: var(--gold);
-            color: var(--navy);
-            font-weight: 600;
-        }
-
-        .btn-primary:hover {
-            background: var(--gold-light);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-secondary {
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            color: var(--cream);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-        }
-
-        .btn svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* Divider */
-        .divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 0;
-        }
-
-        .divider-inner {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .divider-line {
-            width: 80px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        }
-
-        .divider-diamond {
-            width: 10px;
-            height: 10px;
-            border: 1px solid var(--gold);
-            transform: rotate(45deg);
-        }
-
-        /* Stats */
-        .stats {
-            padding: 4rem 5%;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .stats-grid {
+        .hero-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 1px;
+            background: rgba(255,255,255,0.1);
+            margin-top: 3rem;
+            max-width: 800px;
         }
 
-        .stat {
-            text-align: center;
+        .hero-stat {
+            background: var(--black);
             padding: 2rem;
-            position: relative;
+            text-align: center;
         }
 
-        .stat:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 1px;
-            height: 60%;
-            background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.3), transparent);
-        }
-
-        .stat-number {
-            font-family: 'Cinzel', serif;
+        .hero-stat .number {
+            font-family: 'Bebas Neue', sans-serif;
             font-size: 3rem;
-            color: var(--gold);
+            color: var(--electric);
             line-height: 1;
         }
 
-        .stat-label {
-            font-size: 0.75rem;
+        .hero-stat .label {
+            font-size: 0.65rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--gray);
             margin-top: 0.5rem;
         }
 
-        /* Section styling */
-        .section {
-            padding: 8rem 5%;
-            position: relative;
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 3rem;
         }
 
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 5rem;
-        }
-
-        .section-eyebrow {
+        .btn {
             display: inline-flex;
             align-items: center;
             gap: 1rem;
-            font-size: 0.7rem;
-            letter-spacing: 0.3em;
+            padding: 1.25rem 2rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
+            text-decoration: none;
+            border: 1px solid;
+            transition: all 0.3s;
+            cursor: pointer;
         }
 
-        .section-eyebrow::before,
-        .section-eyebrow::after {
-            content: '';
-            width: 30px;
-            height: 1px;
-            background: var(--gold);
+        .btn-primary {
+            background: var(--electric);
+            color: var(--black);
+            border-color: var(--electric);
         }
 
-        .section-title {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 400;
-            letter-spacing: 0.05em;
+        .btn-primary:hover {
+            background: var(--white);
+            border-color: var(--white);
         }
 
-        .section-title .gold {
-            color: var(--gold);
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--electric);
+            color: var(--electric);
+        }
+
+        /* Marquee */
+        .marquee-container {
+            overflow: hidden;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 30s linear infinite;
+        }
+
+        .marquee span {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 0.1em;
+            white-space: nowrap;
+            padding: 0 2rem;
+            color: var(--gray);
+        }
+
+        .marquee span .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--electric);
+            margin: 0 2rem;
+            vertical-align: middle;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 8rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .problem-text h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 2rem;
+        }
+
+        .problem-text h2 .strike {
+            text-decoration: line-through;
+            color: var(--red);
+            opacity: 0.7;
+        }
+
+        .problem-text p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            max-width: 400px;
+        }
+
+        .problem-list {
+            list-style: none;
+        }
+
+        .problem-list li {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .problem-list li:first-child {
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .problem-list .tag {
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+            border: 1px solid var(--electric);
+            color: var(--electric);
         }
 
         /* Services */
         .services {
-            background: var(--navy-light);
+            padding: 8rem 3rem;
+            background: var(--off-white);
+            color: var(--black);
+        }
+
+        .services-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 4rem;
+        }
+
+        .services-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            line-height: 1;
+        }
+
+        .services-header p {
+            font-size: 0.75rem;
+            color: var(--gray);
+            max-width: 300px;
+            text-align: right;
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            gap: 1px;
+            background: rgba(0,0,0,0.1);
         }
 
         .service-card {
-            background: var(--navy);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: var(--off-white);
             padding: 3rem 2rem;
             position: relative;
-            transition: all 0.4s;
+            transition: all 0.3s;
         }
 
-        .service-card::before {
+        .service-card:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .service-card:hover .service-number {
+            color: var(--electric);
+        }
+
+        .service-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            color: rgba(0,0,0,0.1);
+            transition: color 0.3s;
+        }
+
+        .service-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .service-items {
+            list-style: none;
+            font-size: 0.75rem;
+        }
+
+        .service-items li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-card:hover .service-items li {
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .service-items li::before {
+            content: '>';
+            color: var(--electric);
+            font-weight: bold;
+        }
+
+        /* Why Section */
+        .why {
+            padding: 8rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+        }
+
+        .why-left {
+            position: sticky;
+            top: 8rem;
+            height: fit-content;
+        }
+
+        .why-left h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            line-height: 1;
+        }
+
+        .why-left p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 1.5rem;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .why-card {
+            background: var(--black);
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .why-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            opacity: 0;
-            transition: opacity 0.4s;
+            width: 0;
+            height: 2px;
+            background: var(--electric);
+            transition: width 0.4s;
         }
 
-        .service-card:hover::before {
-            opacity: 1;
+        .why-card:hover::before {
+            width: 100%;
         }
 
-        .service-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            border: 1px solid var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            color: var(--gold);
-            position: relative;
-        }
-
-        .service-icon::before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            bottom: -5px;
-            left: -5px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .service-icon svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .service-card h3 {
-            font-family: 'Cinzel', serif;
+        .why-card h4 {
+            font-family: 'Bebas Neue', sans-serif;
             font-size: 1.3rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
         }
 
-        .service-list {
-            list-style: none;
-        }
-
-        .service-list li {
-            padding: 0.6rem 0;
-            font-size: 0.9rem;
+        .why-card p {
+            font-size: 0.75rem;
             color: var(--gray);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .service-list li::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            border: 1px solid var(--gold);
-            transform: rotate(45deg);
-            flex-shrink: 0;
-        }
-
-        /* Why Section */
-        .why-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .why-column {
-            background: var(--navy-light);
-            padding: 3rem;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            position: relative;
-        }
-
-        .why-column::before {
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        }
-
-        .why-column h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            letter-spacing: 0.1em;
-            margin-bottom: 2rem;
-            text-align: center;
-            color: var(--gold);
-        }
-
-        .why-list {
-            list-style: none;
-        }
-
-        .why-list li {
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .why-list li svg {
-            width: 18px;
-            height: 18px;
-            color: var(--gold);
-            flex-shrink: 0;
-            margin-top: 0.2rem;
         }
 
         /* Testimonial */
         .testimonial {
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            padding: 8rem 3rem;
+            background: var(--electric);
+            color: var(--black);
             position: relative;
             overflow: hidden;
         }
 
         .testimonial::before {
-            content: '';
+            content: 'SUCCESS STORY';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 40%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-5deg);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20vw;
+            opacity: 0.1;
+            white-space: nowrap;
         }
 
         .testimonial-content {
             max-width: 900px;
             margin: 0 auto;
-            text-align: center;
             position: relative;
+            z-index: 1;
         }
 
-        .testimonial-quote-decoration {
-            font-family: 'Cinzel', serif;
-            font-size: 8rem;
-            color: var(--gold);
-            opacity: 0.2;
-            line-height: 1;
-            margin-bottom: -2rem;
+        .testimonial-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--black);
         }
 
         .testimonial-quote {
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
-            font-weight: 300;
-            font-style: italic;
-            line-height: 1.8;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.2;
             margin-bottom: 3rem;
         }
 
         .testimonial-author {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1.5rem;
         }
 
-        .testimonial-avatar {
-            width: 80px;
-            height: 80px;
-            border: 2px solid var(--gold);
+        .testimonial-author-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--black);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Cinzel', serif;
+            font-family: 'Bebas Neue', sans-serif;
             font-size: 1.5rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-            position: relative;
+            color: var(--electric);
         }
 
-        .testimonial-avatar::before {
-            content: '';
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            bottom: -8px;
-            left: -8px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .testimonial-name {
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            letter-spacing: 0.1em;
-        }
-
-        .testimonial-company {
-            font-size: 0.9rem;
-            color: var(--gold);
-        }
-
-        .testimonial-since {
+        .testimonial-author-info {
             font-size: 0.8rem;
-            color: var(--gray);
+        }
+
+        .testimonial-author-name {
+            font-weight: 700;
+        }
+
+        .testimonial-author-title {
+            opacity: 0.7;
         }
 
         .testimonial-benefits {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: rgba(212, 175, 55, 0.2);
+            gap: 1rem;
             margin-top: 4rem;
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .testimonial-benefit {
-            background: var(--navy);
-            padding: 2rem 1.5rem;
+            background: var(--black);
+            color: var(--white);
+            padding: 1.5rem;
             text-align: center;
         }
 
         .testimonial-benefit h5 {
-            font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-            color: var(--gold);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
             margin-bottom: 0.5rem;
         }
 
         .testimonial-benefit p {
-            font-size: 0.8rem;
+            font-size: 0.65rem;
             color: var(--gray);
         }
 
         /* CTA */
         .cta {
+            padding: 8rem 3rem;
             text-align: center;
+            position: relative;
         }
 
         .cta h2 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 400;
-            letter-spacing: 0.05em;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 1;
             margin-bottom: 1.5rem;
         }
 
-        .cta h2 .gold {
-            color: var(--gold);
+        .cta h2 .highlight {
+            color: var(--electric);
         }
 
         .cta p {
-            font-size: 1.1rem;
+            font-size: 0.85rem;
             color: var(--gray);
             max-width: 500px;
             margin: 0 auto 3rem;
@@ -724,11 +615,12 @@
 
         /* Footer */
         footer {
-            padding: 3rem 5%;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 2rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.7rem;
         }
 
         .footer-logo {
@@ -737,7 +629,7 @@
         }
 
         .footer-logo img {
-            height: 32px;
+            height: 28px;
             width: auto;
         }
 
@@ -750,52 +642,37 @@
         .footer-links a {
             color: var(--gray);
             text-decoration: none;
-            font-size: 0.8rem;
             letter-spacing: 0.1em;
-            transition: color 0.3s;
+            transition: color 0.2s;
         }
 
         .footer-links a:hover {
-            color: var(--gold);
+            color: var(--electric);
         }
 
         .footer-copy {
-            font-size: 0.75rem;
             color: var(--gray);
         }
 
-        /* Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive */
         /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
             flex-direction: column;
             justify-content: center;
-            gap: 5px;
+            gap: 6px;
             width: 44px;
             height: 44px;
             background: none;
-            border: 1px solid var(--gold);
+            border: 1px solid rgba(255,255,255,0.2);
             cursor: pointer;
             padding: 10px;
         }
 
         .mobile-menu-btn span {
             display: block;
-            width: 22px;
-            height: 1px;
-            background: var(--gold);
+            width: 24px;
+            height: 2px;
+            background: var(--electric);
             transition: all 0.3s ease;
         }
 
@@ -806,7 +683,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: var(--navy);
+            background: var(--black);
             z-index: 999;
             flex-direction: column;
             justify-content: center;
@@ -819,16 +696,16 @@
         }
 
         .mobile-nav a {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            color: var(--cream);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--white);
             text-decoration: none;
             letter-spacing: 0.1em;
             transition: color 0.3s;
         }
 
         .mobile-nav a:hover {
-            color: var(--gold);
+            color: var(--electric);
         }
 
         .mobile-nav-close {
@@ -838,37 +715,35 @@
             width: 44px;
             height: 44px;
             background: none;
-            border: 1px solid var(--gold);
+            border: 1px solid rgba(255,255,255,0.2);
             cursor: pointer;
             font-size: 1.5rem;
-            color: var(--gold);
+            color: var(--electric);
         }
 
+        /* Responsive */
         @media (max-width: 1024px) {
-            .services-grid,
-            .testimonial-benefits {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .why-grid {
+            .problem,
+            .why {
                 grid-template-columns: 1fr;
             }
 
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .why-left {
+                position: static;
             }
 
-            .stat:nth-child(2)::after {
-                display: none;
+            .services-grid,
+            .testimonial-benefits {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
             nav {
-                padding: 1rem 5%;
+                padding: 1rem 1.5rem;
             }
 
-            .nav-links, .nav-cta {
+            .nav-links {
                 display: none;
             }
 
@@ -877,16 +752,20 @@
             }
 
             .hero {
-                padding: 6rem 5% 3rem;
+                padding: 6rem 1.5rem 3rem;
                 min-height: auto;
             }
 
             .hero h1 {
-                font-size: clamp(2rem, 8vw, 3rem);
+                font-size: clamp(2.5rem, 12vw, 4rem);
             }
 
-            .hero-description {
-                font-size: 1rem;
+            .hero-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-stat .number {
+                font-size: 2rem;
             }
 
             .hero-cta {
@@ -900,53 +779,55 @@
                 min-height: 48px;
             }
 
-            .stats {
-                padding: 3rem 5%;
+            .problem,
+            .services,
+            .why,
+            .testimonial,
+            .cta {
+                padding: 4rem 1.5rem;
             }
 
-            .stat-number {
+            .problem-text h2 {
                 font-size: 2.5rem;
             }
 
-            .section {
-                padding: 4rem 5%;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
             .services-grid,
-            .stats-grid,
+            .why-grid,
             .testimonial-benefits {
                 grid-template-columns: 1fr;
             }
 
-            .service-card {
-                padding: 2rem 1.5rem;
+            .services-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
             }
 
-            .why-column {
-                padding: 2rem;
+            .services-header h2 {
+                font-size: 3rem;
             }
 
-            .stat::after {
-                display: none;
+            .services-header p {
+                text-align: left;
+            }
+
+            .why-left h2 {
+                font-size: 3rem;
             }
 
             .testimonial-quote {
-                font-size: 1.2rem;
+                font-size: 1.5rem;
             }
 
             .cta h2 {
-                font-size: 1.8rem;
+                font-size: clamp(2rem, 8vw, 4rem);
             }
 
             footer {
                 flex-direction: column;
                 gap: 1.5rem;
                 text-align: center;
-                padding: 2rem 5%;
+                padding: 2rem 1.5rem;
             }
 
             .footer-links {
@@ -956,31 +837,48 @@
         }
 
         @media (max-width: 480px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 2.5rem;
             }
 
-            .section-title {
-                font-size: 1.5rem;
+            .services-header h2,
+            .why-left h2 {
+                font-size: 2.5rem;
             }
 
-            .stat-number {
+            .problem-text h2 {
                 font-size: 2rem;
             }
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <nav id="nav">
+    <nav>
         <a href="#home" class="logo">
             <img src="logo.png" alt="Ablesource">
         </a>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#why">Why Us</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="#contact" class="nav-cta">Contact</a>
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
             <span></span>
             <span></span>
@@ -992,287 +890,234 @@
         <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
         <a href="#home" class="mobile-nav-link">HOME</a>
         <a href="#services" class="mobile-nav-link">SERVICES</a>
-        <a href="#about" class="mobile-nav-link">ABOUT</a>
+        <a href="#why" class="mobile-nav-link">WHY US</a>
         <a href="#contact" class="mobile-nav-link">CONTACT</a>
     </div>
 
     <section class="hero" id="home">
-        <div class="hero-decoration">
-            <svg viewBox="0 0 800 800" fill="none">
-                <circle cx="400" cy="400" r="350" stroke="#D4AF37" stroke-width="0.5" opacity="0.2"/>
-                <circle cx="400" cy="400" r="280" stroke="#D4AF37" stroke-width="0.5" opacity="0.15"/>
-                <circle cx="400" cy="400" r="210" stroke="#D4AF37" stroke-width="0.5" opacity="0.1"/>
-                <line x1="50" y1="400" x2="750" y2="400" stroke="#D4AF37" stroke-width="0.5" opacity="0.1"/>
-                <line x1="400" y1="50" x2="400" y2="750" stroke="#D4AF37" stroke-width="0.5" opacity="0.1"/>
-                <line x1="150" y1="150" x2="650" y2="650" stroke="#D4AF37" stroke-width="0.5" opacity="0.1"/>
-                <line x1="650" y1="150" x2="150" y2="650" stroke="#D4AF37" stroke-width="0.5" opacity="0.1"/>
-            </svg>
-        </div>
-        <div class="hero-content">
-            <p class="hero-eyebrow">Excellence Since 1999</p>
-            <h1>
-                <div class="line"><span>REDUCE COSTS</span></div>
-                <div class="line"><span>SAVE <span class="gold">TIME</span></span></div>
-                <div class="line"><span>INCREASE PROFIT</span></div>
-            </h1>
-            <p class="hero-description">
-                Government regulation is necessary - and it is our specialty and expertise. Let us save you the time, risk, and worry of getting it right.
-            </p>
-            <div class="hero-cta">
-                <a href="#contact" class="btn btn-primary">
-                    Begin Partnership
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-                <a href="#services" class="btn btn-secondary">Discover More</a>
+        <div class="hero-badge">Trusted Since 1999</div>
+        <h1>
+            <div class="line"><span>REDUCE</span></div>
+            <div class="line"><span>LABOR <span class="highlight">COSTS</span></span></div>
+            <div class="line"><span>SAVE TIME</span></div>
+            <div class="line"><span>INCREASE PROFIT</span></div>
+        </h1>
+
+        <div class="hero-grid">
+            <div class="hero-stat">
+                <div class="number">25+</div>
+                <div class="label">Years</div>
             </div>
+            <div class="hero-stat">
+                <div class="number">0</div>
+                <div class="label">Audits</div>
+            </div>
+            <div class="hero-stat">
+                <div class="number">100%</div>
+                <div class="label">Compliance</div>
+            </div>
+            <div class="hero-stat">
+                <div class="number">24/7</div>
+                <div class="label">Support</div>
+            </div>
+        </div>
+
+        <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">Get Started ></a>
+            <a href="#services" class="btn btn-secondary">Learn More</a>
         </div>
     </section>
 
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat reveal">
-                <div class="stat-number">25+</div>
-                <div class="stat-label">Years of Excellence</div>
-            </div>
-            <div class="stat reveal">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Compliance Rate</div>
-            </div>
-            <div class="stat reveal">
-                <div class="stat-number">0</div>
-                <div class="stat-label">Failed Audits</div>
-            </div>
-            <div class="stat reveal">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Expert Support</div>
-            </div>
+    <div class="marquee-container">
+        <div class="marquee">
+            <span>WORKERS COMP <span class="dot"></span> PAYROLL <span class="dot"></span> COMPLIANCE <span class="dot"></span> HR SOLUTIONS <span class="dot"></span> OSHA SAFETY <span class="dot"></span> EMPLOYEE HANDBOOK <span class="dot"></span></span>
+            <span>WORKERS COMP <span class="dot"></span> PAYROLL <span class="dot"></span> COMPLIANCE <span class="dot"></span> HR SOLUTIONS <span class="dot"></span> OSHA SAFETY <span class="dot"></span> EMPLOYEE HANDBOOK <span class="dot"></span></span>
         </div>
+    </div>
+
+    <section class="problem">
+        <div class="problem-text reveal">
+            <h2>TIME IS <span class="strike">MONEY</span><br>PROFIT</h2>
+            <p>Government regulation is necessary. But you didn't start a business to become a compliance expert. Focus on growth—we'll handle the red tape.</p>
+        </div>
+        <ul class="problem-list reveal">
+            <li>
+                Transfer employment liability
+                <span class="tag">Risk Off</span>
+            </li>
+            <li>
+                Stay current with laws & regulations
+                <span class="tag">Always Updated</span>
+            </li>
+            <li>
+                Avoid financial penalties
+                <span class="tag">Protected</span>
+            </li>
+            <li>
+                Automated regulatory filings
+                <span class="tag">Hands-Free</span>
+            </li>
+            <li>
+                Save time with employee questions
+                <span class="tag">Efficient</span>
+            </li>
+            <li>
+                Manage claims when they occur
+                <span class="tag">Covered</span>
+            </li>
+        </ul>
     </section>
 
-    <section class="section services" id="services">
-        <div class="section-header reveal">
-            <p class="section-eyebrow">Our Expertise</p>
-            <h2 class="section-title">Worry-Free Solutions for<br><span class="gold">Highly Regulated</span> Services</h2>
+    <section class="services" id="services">
+        <div class="services-header reveal">
+            <h2>WHAT WE DO</h2>
+            <p>Worry-free solutions for highly regulated services. We handle the complexity so you don't have to.</p>
         </div>
         <div class="services-grid">
             <div class="service-card reveal">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                </div>
+                <div class="service-number">01</div>
                 <h3>WORKERS COMPENSATION</h3>
-                <ul class="service-list">
+                <ul class="service-items">
                     <li>Pay as you go</li>
                     <li>No audits required</li>
-                    <li>Complete claims management</li>
+                    <li>Full claims management</li>
                     <li>OSHA safety program</li>
                     <li>Safety manual provided</li>
                 </ul>
             </div>
             <div class="service-card reveal">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                        <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
-                    </svg>
-                </div>
+                <div class="service-number">02</div>
                 <h3>EMPLOYEE REGULATIONS</h3>
-                <ul class="service-list">
-                    <li>Customized employee handbook</li>
+                <ul class="service-items">
+                    <li>Custom employee handbook</li>
                     <li>State employment posters</li>
-                    <li>Employee Assistance Program</li>
+                    <li>EAP services</li>
                     <li>HR compliance support</li>
                     <li>Policy development</li>
                 </ul>
             </div>
             <div class="service-card reveal">
-                <div class="service-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
-                    </svg>
-                </div>
+                <div class="service-number">03</div>
                 <h3>PAYROLL & COMPLIANCE</h3>
-                <ul class="service-list">
+                <ul class="service-items">
                     <li>Full payroll processing</li>
                     <li>Direct deposit</li>
                     <li>Garnishment handling</li>
                     <li>New hire reporting</li>
-                    <li>W-2 & year-end filings</li>
+                    <li>W-2 & year end filings</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <div class="divider">
-        <div class="divider-inner">
-            <div class="divider-line"></div>
-            <div class="divider-diamond"></div>
-            <div class="divider-line"></div>
-        </div>
-    </div>
-
-    <section class="section" id="about">
-        <div class="section-header reveal">
-            <p class="section-eyebrow">The Ablesource Advantage</p>
-            <h2 class="section-title">25 Years of <span class="gold">Trusted</span> Expertise</h2>
+    <section class="why" id="why">
+        <div class="why-left reveal">
+            <h2>WHY<br>ABLE<br>SOURCE</h2>
+            <p>25 years of experience. Trusted advisor to business owners. Expert handling of the situations that keep you up at night.</p>
         </div>
         <div class="why-grid">
-            <div class="why-column reveal">
-                <h3>WHY OUTSOURCE</h3>
-                <ul class="why-list">
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        </svg>
-                        Transfer of employment liability
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M12 6v6l4 2"/>
-                        </svg>
-                        Stay current with laws and regulations
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 3l18 18M10.5 10.5a3 3 0 004 4"/>
-                            <path d="M14 14l7 7M1 1l5 5"/>
-                        </svg>
-                        Avoid financial penalties
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                            <path d="M14 2v6h6"/>
-                        </svg>
-                        Automated regulatory filings
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
-                        </svg>
-                        Make employees' lives easier
-                    </li>
-                </ul>
+            <div class="why-card reveal">
+                <h4>INDUSTRY VETERANS</h4>
+                <p>25+ years navigating complex compliance landscapes across every major industry.</p>
             </div>
-            <div class="why-column reveal">
-                <h3>WHY ABLESOURCE</h3>
-                <ul class="why-list">
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        25 years of industry experience
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        Broad base across all industries
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        Trusted advisor to business owners
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        Expert in difficult HR situations
-                    </li>
-                    <li>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                        Comprehensive business solutions
-                    </li>
-                </ul>
+            <div class="why-card reveal">
+                <h4>TRUSTED ADVISOR</h4>
+                <p>Direct access to experts who understand your business and speak your language.</p>
+            </div>
+            <div class="why-card reveal">
+                <h4>DIFFICULT SITUATIONS</h4>
+                <p>Extensive experience with harassment, terminations, and sensitive HR matters.</p>
+            </div>
+            <div class="why-card reveal">
+                <h4>BUSINESS SOLUTIONS</h4>
+                <p>Broad background enables solutions to challenges beyond just compliance.</p>
+            </div>
+            <div class="why-card reveal">
+                <h4>BULK NEGOTIATION</h4>
+                <p>Access to insurance rates unavailable to individual businesses.</p>
+            </div>
+            <div class="why-card reveal">
+                <h4>ZERO HASSLE</h4>
+                <p>All paperwork, reporting, and filings handled. You focus on your business.</p>
             </div>
         </div>
     </section>
 
-    <section class="section testimonial">
-        <div class="testimonial-content reveal">
-            <div class="testimonial-quote-decoration">"</div>
-            <p class="testimonial-quote">
-                Ablesource saves us on Workers' Compensation, handles all our payroll and regulatory reports, and provides invaluable expert advice for difficult situations. It saves me a LOT of time and headaches.
-            </p>
+    <section class="testimonial">
+        <div class="testimonial-content">
+            <div class="testimonial-label">Client Success Story</div>
+            <blockquote class="testimonial-quote">
+                "ABLESOURCE SAVES US ON WORKERS' COMP, HANDLES ALL OUR PAYROLL AND REGULATORY REPORTS, AND PROVIDES INVALUABLE EXPERT ADVICE. IT SAVES ME A LOT OF TIME AND HEADACHES."
+            </blockquote>
             <div class="testimonial-author">
-                <div class="testimonial-avatar">TE</div>
-                <span class="testimonial-name">TOM EICKMAN</span>
-                <span class="testimonial-company">Eickman's Meat Processing</span>
-                <span class="testimonial-since">Family business since 1945 | 3rd Generation</span>
+                <div class="testimonial-author-avatar">TE</div>
+                <div class="testimonial-author-info">
+                    <div class="testimonial-author-name">Tom Eickman</div>
+                    <div class="testimonial-author-title">Eickman's Meat Processing — Family business since 1945</div>
+                </div>
             </div>
             <div class="testimonial-benefits">
                 <div class="testimonial-benefit">
-                    <h5>SAVINGS</h5>
-                    <p>Bulk-negotiated rates</p>
+                    <h5>SAVES MONEY</h5>
+                    <p>Bulk-negotiated workers' comp rates</p>
                 </div>
                 <div class="testimonial-benefit">
-                    <h5>STABILITY</h5>
-                    <p>No provider drops</p>
+                    <h5>NO CAROUSEL</h5>
+                    <p>Stable insurance without provider drops</p>
                 </div>
                 <div class="testimonial-benefit">
-                    <h5>EFFICIENCY</h5>
-                    <p>Paperwork handled</p>
+                    <h5>LESS PAPERWORK</h5>
+                    <p>All payroll and reporting handled</p>
                 </div>
                 <div class="testimonial-benefit">
-                    <h5>EXPERTISE</h5>
-                    <p>Guidance on demand</p>
+                    <h5>EXPERT ADVICE</h5>
+                    <p>Guidance through difficult situations</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section cta" id="contact">
-        <div class="section-header reveal">
-            <p class="section-eyebrow">Your Future Awaits</p>
-            <h2>Isn't It Time <span class="gold">You</span><br>Became an Ablesource Client?</h2>
-            <p>Join the distinguished business owners who have made the decision to save money and reduce risk.</p>
-            <a href="mailto:contact@ablesource.com" class="btn btn-primary">
-                Begin Your Partnership
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-        </div>
+    <section class="cta" id="contact">
+        <h2>ISN'T IT TIME<br><span class="highlight">YOU</span> JOINED?</h2>
+        <p>Business owners who've made the decision to save money and reduce risk trust Ablesource. Your turn.</p>
+        <a href="mailto:contact@ablesource.com" class="btn btn-primary">Start Now ></a>
     </section>
 
     <footer>
-        <a href="#home" class="footer-logo">
-            <img src="logo.png" alt="Ablesource">
-        </a>
+        <a href="#home" class="footer-logo"><img src="logo.png" alt="Ablesource"></a>
         <ul class="footer-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <p class="footer-copy">&copy; 2025 Ablesource. All rights reserved.</p>
+        <div class="footer-copy">&copy; 2025 Ablesource</div>
     </footer>
 
     <script>
-        // Navbar scroll effect
-        const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            reveals.forEach((el, i) => {
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+                const revealPoint = 150;
+
+                if (revealTop < windowHeight - revealPoint) {
+                    setTimeout(() => {
+                        el.classList.add('active');
+                    }, i * 50);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
 
         // Mobile menu
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileNav = document.getElementById('mobileNav');
         const mobileNavClose = document.getElementById('mobileNavClose');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
         mobileMenuBtn.addEventListener('click', () => {
             mobileNav.classList.add('active');
@@ -1290,23 +1135,6 @@
                 document.body.style.overflow = '';
             });
         });
-
-        // Scroll reveal
-        const reveals = document.querySelectorAll('.reveal');
-        const revealOnScroll = () => {
-            reveals.forEach(el => {
-                const windowHeight = window.innerHeight;
-                const revealTop = el.getBoundingClientRect().top;
-                const revealPoint = 150;
-
-                if (revealTop < windowHeight - revealPoint) {
-                    el.classList.add('active');
-                }
-            });
-        };
-
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
     </script>
 </body>
 </html>
