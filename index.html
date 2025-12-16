@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ablesource | Website Style Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #141414;
+            --surface-hover: #1a1a1a;
+            --border: #2a2a2a;
+            --text: #ffffff;
+            --text-muted: #888888;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Subtle grid background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 3rem 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            margin-bottom: 1.5rem;
+        }
+
+        .logo img {
+            height: 48px;
+            width: auto;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #fff 0%, #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main content */
+        main {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* Style grid */
+        .styles-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .style-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .style-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--accent);
+        }
+
+        .style-preview {
+            aspect-ratio: 16/10;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .style-preview iframe {
+            width: 200%;
+            height: 200%;
+            transform: scale(0.5);
+            transform-origin: top left;
+            border: none;
+            pointer-events: none;
+        }
+
+        .style-preview-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 60%, var(--surface) 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .style-card:hover .style-preview-overlay {
+            opacity: 1;
+        }
+
+        .style-info {
+            padding: 1.5rem;
+        }
+
+        .style-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .style-number {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 100px;
+        }
+
+        .style-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .style-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .style-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .style-tag {
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.35rem 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            color: var(--text-muted);
+        }
+
+        .style-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-muted);
+        }
+
+        .btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Color palettes */
+        .color-palette {
+            display: flex;
+            gap: 4px;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .color-swatch {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .styles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            header {
+                padding: 2rem 0;
+            }
+
+            main {
+                padding: 2rem 0;
+            }
+
+            .style-info {
+                padding: 1rem;
+            }
+
+            .style-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="logo.png" alt="Ablesource">
+            </div>
+            <h1>Website Style Gallery</h1>
+            <p>Four distinctive website designs for Ablesource HR & Compliance services. Each style offers a unique aesthetic approach while maintaining the same core messaging.</p>
+        </header>
+
+        <main>
+            <div class="section-title">Available Styles</div>
+
+            <div class="styles-grid">
+                <!-- Style 1: Editorial Luxury -->
+                <article class="style-card">
+                    <div class="style-preview">
+                        <iframe src="style1-editorial-luxury.html" loading="lazy" title="Editorial Luxury Preview"></iframe>
+                        <div class="style-preview-overlay"></div>
+                    </div>
+                    <div class="style-info">
+                        <div class="style-header">
+                            <span class="style-number">Style 01</span>
+                        </div>
+                        <h2 class="style-name">Corporate Editorial Luxury</h2>
+                        <p class="style-description">Sophisticated and refined with serif typography, muted earth tones, and elegant spacing. Perfect for establishing trust and premium positioning.</p>
+                        <div class="style-tags">
+                            <span class="style-tag">Serif Typography</span>
+                            <span class="style-tag">Earth Tones</span>
+                            <span class="style-tag">Elegant</span>
+                            <span class="style-tag">Premium</span>
+                        </div>
+                        <div class="style-actions">
+                            <a href="style1-editorial-luxury.html" class="btn btn-primary">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                View Live
+                            </a>
+                        </div>
+                        <div class="color-palette">
+                            <div class="color-swatch" style="background: #F7F4EF;" title="Cream"></div>
+                            <div class="color-swatch" style="background: #2C2C2C;" title="Charcoal"></div>
+                            <div class="color-swatch" style="background: #9CAF88;" title="Sage"></div>
+                            <div class="color-swatch" style="background: #C4703F;" title="Terracotta"></div>
+                            <div class="color-swatch" style="background: #B8956E;" title="Gold"></div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Style 2: Brutalist -->
+                <article class="style-card">
+                    <div class="style-preview">
+                        <iframe src="style2-brutalist.html" loading="lazy" title="Brutalist Preview"></iframe>
+                        <div class="style-preview-overlay"></div>
+                    </div>
+                    <div class="style-info">
+                        <div class="style-header">
+                            <span class="style-number">Style 02</span>
+                        </div>
+                        <h2 class="style-name">Bold Brutalist</h2>
+                        <p class="style-description">Raw and industrial with high contrast black/white palette and electric lime accents. Unapologetic typography that commands attention.</p>
+                        <div class="style-tags">
+                            <span class="style-tag">Industrial</span>
+                            <span class="style-tag">High Contrast</span>
+                            <span class="style-tag">Bold</span>
+                            <span class="style-tag">Modern</span>
+                        </div>
+                        <div class="style-actions">
+                            <a href="style2-brutalist.html" class="btn btn-primary">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                View Live
+                            </a>
+                        </div>
+                        <div class="color-palette">
+                            <div class="color-swatch" style="background: #0A0A0A;" title="Black"></div>
+                            <div class="color-swatch" style="background: #FFFFFF;" title="White"></div>
+                            <div class="color-swatch" style="background: #CCFF00;" title="Electric"></div>
+                            <div class="color-swatch" style="background: #FF3333;" title="Red"></div>
+                            <div class="color-swatch" style="background: #888888;" title="Gray"></div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Style 3: Warm Organic -->
+                <article class="style-card">
+                    <div class="style-preview">
+                        <iframe src="style3-warm-organic.html" loading="lazy" title="Warm Organic Preview"></iframe>
+                        <div class="style-preview-overlay"></div>
+                    </div>
+                    <div class="style-info">
+                        <div class="style-header">
+                            <span class="style-number">Style 03</span>
+                        </div>
+                        <h2 class="style-name">Warm Organic</h2>
+                        <p class="style-description">Friendly and approachable with soft gradients, rounded corners, and a calming presence. Makes compliance feel less intimidating.</p>
+                        <div class="style-tags">
+                            <span class="style-tag">Friendly</span>
+                            <span class="style-tag">Soft Gradients</span>
+                            <span class="style-tag">Rounded</span>
+                            <span class="style-tag">Approachable</span>
+                        </div>
+                        <div class="style-actions">
+                            <a href="style3-warm-organic.html" class="btn btn-primary">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                View Live
+                            </a>
+                        </div>
+                        <div class="color-palette">
+                            <div class="color-swatch" style="background: #FFF9F5;" title="Cream"></div>
+                            <div class="color-swatch" style="background: #E86F51;" title="Coral"></div>
+                            <div class="color-swatch" style="background: #7BC5AE;" title="Mint"></div>
+                            <div class="color-swatch" style="background: #B8D4E8;" title="Sky"></div>
+                            <div class="color-swatch" style="background: #2D3436;" title="Charcoal"></div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Style 4: Art Deco -->
+                <article class="style-card">
+                    <div class="style-preview">
+                        <iframe src="style4-art-deco.html" loading="lazy" title="Art Deco Preview"></iframe>
+                        <div class="style-preview-overlay"></div>
+                    </div>
+                    <div class="style-info">
+                        <div class="style-header">
+                            <span class="style-number">Style 04</span>
+                        </div>
+                        <h2 class="style-name">Geometric Art Deco</h2>
+                        <p class="style-description">Sharp precision with gold accents on deep navy. Architectural patterns and geometric decorations convey expertise and prestige.</p>
+                        <div class="style-tags">
+                            <span class="style-tag">Art Deco</span>
+                            <span class="style-tag">Gold Accents</span>
+                            <span class="style-tag">Geometric</span>
+                            <span class="style-tag">Luxurious</span>
+                        </div>
+                        <div class="style-actions">
+                            <a href="style4-art-deco.html" class="btn btn-primary">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                View Live
+                            </a>
+                        </div>
+                        <div class="color-palette">
+                            <div class="color-swatch" style="background: #0D1B2A;" title="Navy"></div>
+                            <div class="color-swatch" style="background: #D4AF37;" title="Gold"></div>
+                            <div class="color-swatch" style="background: #FAF8F5;" title="Cream"></div>
+                            <div class="color-swatch" style="background: #1B263B;" title="Navy Light"></div>
+                            <div class="color-swatch" style="background: #9CA3AF;" title="Gray"></div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 <a href="https://ablesource.com">Ablesource</a>. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
